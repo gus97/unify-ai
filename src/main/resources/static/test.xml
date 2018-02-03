@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework" level="WARN"/>
+    <appender name="dailyRollingFileAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/gus/migu-ai-socket-log/xxx/xxx.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>/gus/migu-ai-socket-log/xxx/xxx-log.%d{yyyy-MM-dd}.log
+            </FileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%msg %n
+            </Pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="dailyRollingFileAppender"></appender-ref>
+    </root>
+</configuration>

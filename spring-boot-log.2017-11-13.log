@@ -1,0 +1,589 @@
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 692 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Started UnifyAiApplication in 1.886 seconds (JVM running for 2.432) 
+Health check failed 
+org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:204)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.getConnection(JedisConnectionFactory.java:348)
+	at org.springframework.data.redis.core.RedisConnectionUtils.doGetConnection(RedisConnectionUtils.java:129)
+	at org.springframework.data.redis.core.RedisConnectionUtils.getConnection(RedisConnectionUtils.java:92)
+	at org.springframework.data.redis.core.RedisConnectionUtils.getConnection(RedisConnectionUtils.java:79)
+	at org.springframework.boot.actuate.health.RedisHealthIndicator.doHealthCheck(RedisHealthIndicator.java:52)
+	at org.springframework.boot.actuate.health.AbstractHealthIndicator.health(AbstractHealthIndicator.java:43)
+	at org.springframework.boot.actuate.health.CompositeHealthIndicator.health(CompositeHealthIndicator.java:68)
+	at org.springframework.boot.actuate.endpoint.HealthEndpoint.invoke(HealthEndpoint.java:85)
+	at org.springframework.boot.actuate.endpoint.HealthEndpoint.invoke(HealthEndpoint.java:35)
+	at org.springframework.boot.actuate.endpoint.jmx.DataEndpointMBean.getData(DataEndpointMBean.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.Trampoline.invoke(MethodUtil.java:71)
+	at sun.reflect.GeneratedMethodAccessor57.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.MethodUtil.invoke(MethodUtil.java:275)
+	at javax.management.modelmbean.RequiredModelMBean$4.run(RequiredModelMBean.java:1252)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80)
+	at javax.management.modelmbean.RequiredModelMBean.invokeMethod(RequiredModelMBean.java:1246)
+	at javax.management.modelmbean.RequiredModelMBean.invoke(RequiredModelMBean.java:1085)
+	at org.springframework.jmx.export.SpringModelMBean.invoke(SpringModelMBean.java:90)
+	at javax.management.modelmbean.RequiredModelMBean.getAttribute(RequiredModelMBean.java:1562)
+	at org.springframework.jmx.export.SpringModelMBean.getAttribute(SpringModelMBean.java:109)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.getAttribute(DefaultMBeanServerInterceptor.java:647)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.getAttribute(JmxMBeanServer.java:678)
+	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1445)
+	at javax.management.remote.rmi.RMIConnectionImpl.access$300(RMIConnectionImpl.java:76)
+	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1309)
+	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1401)
+	at javax.management.remote.rmi.RMIConnectionImpl.getAttribute(RMIConnectionImpl.java:639)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:357)
+	at sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:568)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:683)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:53)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:194)
+	... 51 common frames omitted
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:207)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:93)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1767)
+	at redis.clients.jedis.JedisFactory.makeObject(JedisFactory.java:106)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:868)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)
+	at redis.clients.util.Pool.getResource(Pool.java:49)
+	... 54 common frames omitted
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at redis.clients.jedis.Connection.connect(Connection.java:184)
+	... 61 common frames omitted
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 3812 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Started UnifyAiApplication in 2.512 seconds (JVM running for 3.793) 
+Health check failed 
+org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:204)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.getConnection(JedisConnectionFactory.java:348)
+	at org.springframework.data.redis.core.RedisConnectionUtils.doGetConnection(RedisConnectionUtils.java:129)
+	at org.springframework.data.redis.core.RedisConnectionUtils.getConnection(RedisConnectionUtils.java:92)
+	at org.springframework.data.redis.core.RedisConnectionUtils.getConnection(RedisConnectionUtils.java:79)
+	at org.springframework.boot.actuate.health.RedisHealthIndicator.doHealthCheck(RedisHealthIndicator.java:52)
+	at org.springframework.boot.actuate.health.AbstractHealthIndicator.health(AbstractHealthIndicator.java:43)
+	at org.springframework.boot.actuate.health.CompositeHealthIndicator.health(CompositeHealthIndicator.java:68)
+	at org.springframework.boot.actuate.endpoint.HealthEndpoint.invoke(HealthEndpoint.java:85)
+	at org.springframework.boot.actuate.endpoint.HealthEndpoint.invoke(HealthEndpoint.java:35)
+	at org.springframework.boot.actuate.endpoint.jmx.DataEndpointMBean.getData(DataEndpointMBean.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.Trampoline.invoke(MethodUtil.java:71)
+	at sun.reflect.GeneratedMethodAccessor63.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.MethodUtil.invoke(MethodUtil.java:275)
+	at javax.management.modelmbean.RequiredModelMBean$4.run(RequiredModelMBean.java:1252)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80)
+	at javax.management.modelmbean.RequiredModelMBean.invokeMethod(RequiredModelMBean.java:1246)
+	at javax.management.modelmbean.RequiredModelMBean.invoke(RequiredModelMBean.java:1085)
+	at org.springframework.jmx.export.SpringModelMBean.invoke(SpringModelMBean.java:90)
+	at javax.management.modelmbean.RequiredModelMBean.getAttribute(RequiredModelMBean.java:1562)
+	at org.springframework.jmx.export.SpringModelMBean.getAttribute(SpringModelMBean.java:109)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.getAttribute(DefaultMBeanServerInterceptor.java:647)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.getAttribute(JmxMBeanServer.java:678)
+	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1445)
+	at javax.management.remote.rmi.RMIConnectionImpl.access$300(RMIConnectionImpl.java:76)
+	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1309)
+	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1401)
+	at javax.management.remote.rmi.RMIConnectionImpl.getAttribute(RMIConnectionImpl.java:639)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:357)
+	at sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:568)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:683)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:53)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:194)
+	... 51 common frames omitted
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:207)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:93)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1767)
+	at redis.clients.jedis.JedisFactory.makeObject(JedisFactory.java:106)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:868)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)
+	at redis.clients.util.Pool.getResource(Pool.java:49)
+	... 54 common frames omitted
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at redis.clients.jedis.Connection.connect(Connection.java:184)
+	... 61 common frames omitted
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 9828 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Started UnifyAiApplication in 1.799 seconds (JVM running for 2.202) 
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 2636 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Started UnifyAiApplication in 1.788 seconds (JVM running for 2.176) 
+Initializing Spring FrameworkServlet 'dispatcherServlet' 
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 10916 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Started UnifyAiApplication in 1.925 seconds (JVM running for 2.344) 
+Initializing Spring FrameworkServlet 'dispatcherServlet' 
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 9008 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Started UnifyAiApplication in 1.754 seconds (JVM running for 2.177) 
+Initializing Spring FrameworkServlet 'dispatcherServlet' 
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 10492 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 4804 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Started UnifyAiApplication in 1.862 seconds (JVM running for 2.292) 
+Initializing Spring FrameworkServlet 'dispatcherServlet' 
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 8504 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2f7c2f4f: startup date [Mon Nov 13 09:39:51 CST 2017]; root of context hierarchy 
+Multiple Spring Data modules found, entering strict repository configuration mode! 
+Tomcat initialized with port(s): 9998 (http) 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 784 ms 
+Mapping servlet: 'dispatcherServlet' to [/] 
+Mapping filter: 'metricsFilter' to: [/*] 
+Mapping filter: 'characterEncodingFilter' to: [/*] 
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*] 
+Mapping filter: 'httpPutFormContentFilter' to: [/*] 
+Mapping filter: 'requestContextFilter' to: [/*] 
+Mapping filter: 'webRequestLoggingFilter' to: [/*] 
+Mapping filter: 'applicationContextIdFilter' to: [/*] 
+Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2f7c2f4f: startup date [Mon Nov 13 09:39:51 CST 2017]; root of context hierarchy 
+Mapped "{[/mysql-test]}" onto public java.lang.Object cn.migu.unify.ai.UnifyAiApplication.mysqlTest2() 
+Mapped "{[/map]}" onto public java.util.Map cn.migu.unify.ai.UnifyAiApplication.test2() 
+Mapped "{[/mysql-gus]}" onto public java.lang.Object cn.migu.unify.ai.UnifyAiApplication.mysqlTest1() 
+Mapped "{[/string]}" onto public java.lang.Object cn.migu.unify.ai.UnifyAiApplication.test1() throws java.lang.InterruptedException 
+Mapped "{[/zset]}" onto public java.lang.String cn.migu.unify.ai.UnifyAiApplication.test4() 
+Mapped "{[/list]}" onto public java.util.List cn.migu.unify.ai.UnifyAiApplication.test3() 
+Mapped "{[/s1]}" onto public java.lang.String cn.migu.unify.ai.UnifyAiApplication.s1() throws java.net.UnknownHostException 
+Mapped "{[/s2]}" onto public java.lang.String cn.migu.unify.ai.UnifyAiApplication.s2(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/stopDownPic]}" onto public java.lang.String cn.migu.unify.ai.controller.PicDownLoadService.stopDownPic(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/startDownPic]}" onto public java.lang.String cn.migu.unify.ai.controller.PicDownLoadService.startDownPic(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) 
+Mapped URL path [/pic/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/txt/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String) 
+Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/health || /health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal) 
+Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/info || /info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String) 
+Mapped "{[/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>) 
+Mapped "{[/loggers || /loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException 
+Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String) 
+Mapped "{[/env || /env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/auditevents || /auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String) 
+Registering beans for JMX exposure on startup 
+Starting beans in phase 0 
+Tomcat started on port(s): 9998 (http) 
+Started UnifyAiApplication in 1.865 seconds (JVM running for 2.286) 
+Initializing Spring FrameworkServlet 'dispatcherServlet' 
+FrameworkServlet 'dispatcherServlet': initialization started 
+FrameworkServlet 'dispatcherServlet': initialization completed in 9 ms 
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 8788 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1184ab05: startup date [Mon Nov 13 09:42:16 CST 2017]; root of context hierarchy 
+Multiple Spring Data modules found, entering strict repository configuration mode! 
+Tomcat initialized with port(s): 9998 (http) 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 815 ms 
+Mapping servlet: 'dispatcherServlet' to [/] 
+Mapping filter: 'metricsFilter' to: [/*] 
+Mapping filter: 'characterEncodingFilter' to: [/*] 
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*] 
+Mapping filter: 'httpPutFormContentFilter' to: [/*] 
+Mapping filter: 'requestContextFilter' to: [/*] 
+Mapping filter: 'webRequestLoggingFilter' to: [/*] 
+Mapping filter: 'applicationContextIdFilter' to: [/*] 
+Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1184ab05: startup date [Mon Nov 13 09:42:16 CST 2017]; root of context hierarchy 
+Mapped "{[/stopDownPic]}" onto public java.lang.String cn.migu.unify.ai.controller.PicDownLoadService.stopDownPic(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/startDownPic]}" onto public java.lang.String cn.migu.unify.ai.controller.PicDownLoadService.startDownPic(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) 
+Mapped URL path [/pic/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/txt/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped "{[/health || /health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal) 
+Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String) 
+Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/info || /info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException 
+Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String) 
+Mapped "{[/env || /env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String) 
+Mapped "{[/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>) 
+Mapped "{[/loggers || /loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/auditevents || /auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String) 
+Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Registering beans for JMX exposure on startup 
+Starting beans in phase 0 
+Tomcat started on port(s): 9998 (http) 
+Started UnifyAiApplication in 1.994 seconds (JVM running for 2.401) 
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 2448 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1184ab05: startup date [Mon Nov 13 16:45:34 CST 2017]; root of context hierarchy 
+Multiple Spring Data modules found, entering strict repository configuration mode! 
+Tomcat initialized with port(s): 8080 (http) 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 784 ms 
+Mapping servlet: 'dispatcherServlet' to [/] 
+Mapping filter: 'metricsFilter' to: [/*] 
+Mapping filter: 'characterEncodingFilter' to: [/*] 
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*] 
+Mapping filter: 'httpPutFormContentFilter' to: [/*] 
+Mapping filter: 'requestContextFilter' to: [/*] 
+Mapping filter: 'webRequestLoggingFilter' to: [/*] 
+Mapping filter: 'applicationContextIdFilter' to: [/*] 
+Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1184ab05: startup date [Mon Nov 13 16:45:34 CST 2017]; root of context hierarchy 
+Mapped "{[/startDownPic]}" onto public java.lang.String cn.migu.unify.ai.controller.PicDownLoadService.startDownPic(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/stopDownPic]}" onto public java.lang.String cn.migu.unify.ai.controller.PicDownLoadService.stopDownPic(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) 
+Mapped URL path [/pic/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/txt/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String) 
+Mapped "{[/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>) 
+Mapped "{[/loggers || /loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/info || /info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String) 
+Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/auditevents || /auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String) 
+Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException 
+Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String) 
+Mapped "{[/env || /env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/health || /health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal) 
+Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Registering beans for JMX exposure on startup 
+Starting beans in phase 0 
+Tomcat started on port(s): 8080 (http) 
+Started UnifyAiApplication in 1.855 seconds (JVM running for 2.318) 
+Initializing Spring FrameworkServlet 'dispatcherServlet' 
+FrameworkServlet 'dispatcherServlet': initialization started 
+FrameworkServlet 'dispatcherServlet': initialization completed in 11 ms 
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 4380 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1184ab05: startup date [Mon Nov 13 16:54:47 CST 2017]; root of context hierarchy 
+Multiple Spring Data modules found, entering strict repository configuration mode! 
+Tomcat initialized with port(s): 8080 (http) 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 810 ms 
+Mapping servlet: 'dispatcherServlet' to [/] 
+Mapping filter: 'metricsFilter' to: [/*] 
+Mapping filter: 'characterEncodingFilter' to: [/*] 
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*] 
+Mapping filter: 'httpPutFormContentFilter' to: [/*] 
+Mapping filter: 'requestContextFilter' to: [/*] 
+Mapping filter: 'webRequestLoggingFilter' to: [/*] 
+Mapping filter: 'applicationContextIdFilter' to: [/*] 
+Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1184ab05: startup date [Mon Nov 13 16:54:47 CST 2017]; root of context hierarchy 
+Mapped "{[/stopDownPic]}" onto public java.lang.String cn.migu.unify.ai.controller.PicDownLoadService.stopDownPic(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/startDownPic]}" onto public java.lang.String cn.migu.unify.ai.controller.PicDownLoadService.startDownPic(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) 
+Mapped URL path [/pic/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/txt/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String) 
+Mapped "{[/env || /env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/health || /health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal) 
+Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String) 
+Mapped "{[/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>) 
+Mapped "{[/loggers || /loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/auditevents || /auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String) 
+Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String) 
+Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException 
+Mapped "{[/info || /info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Registering beans for JMX exposure on startup 
+Starting beans in phase 0 
+Tomcat started on port(s): 8080 (http) 
+Started UnifyAiApplication in 1.905 seconds (JVM running for 2.338) 
+Initializing Spring FrameworkServlet 'dispatcherServlet' 
+FrameworkServlet 'dispatcherServlet': initialization started 
+FrameworkServlet 'dispatcherServlet': initialization completed in 9 ms 
+由于重复请求或意外宕机引起请求冲突：[20171113164826_5M5RREGK] 等待10秒释放之前的任务 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113164858715_000000001.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113164908903_000000002.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113164918859_000000003.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113164928866_000000004.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113164938829_000000005.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113164948857_000000006.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113164958933_000000007.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165008871_000000008.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165018716_000000009.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165028848_000000010.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165038912_000000011.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165048800_000000012.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165058851_000000013.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165108895_000000014.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165118796_000000015.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165128797_000000016.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165138897_000000017.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165148862_000000018.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165158821_000000019.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165208847_000000020.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165218791_000000021.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165228918_000000022.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165238828_000000023.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165248926_000000024.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165258849_000000025.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165308804_000000026.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165318917_000000027.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165328897_000000028.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165338852_000000029.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165348840_000000030.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165358767_000000031.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165408796_000000032.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165418804_000000033.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165428873_000000034.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165438868_000000035.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165448809_000000036.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165458897_000000037.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165508868_000000038.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165518903_000000039.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165528956_000000040.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal/testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165538866_000000041.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165548902_000000042.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal/testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal/testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165558828_000000043.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal/testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165608784_000000044.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal/testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal/testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165618841_000000045.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal/testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165628956_000000046.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal/testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165638835_000000047.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal/testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+Starting UnifyAiApplication on DESKTOP-90NQSNK with PID 1848 (started by guxic in C:\gus\work-java\归档\unify-ai) 
+No active profile set, falling back to default profiles: default 
+Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1184ab05: startup date [Mon Nov 13 16:57:50 CST 2017]; root of context hierarchy 
+Multiple Spring Data modules found, entering strict repository configuration mode! 
+Tomcat initialized with port(s): 8080 (http) 
+Starting service [Tomcat] 
+Starting Servlet Engine: Apache Tomcat/8.5.23 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 841 ms 
+Mapping servlet: 'dispatcherServlet' to [/] 
+Mapping filter: 'metricsFilter' to: [/*] 
+Mapping filter: 'characterEncodingFilter' to: [/*] 
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*] 
+Mapping filter: 'httpPutFormContentFilter' to: [/*] 
+Mapping filter: 'requestContextFilter' to: [/*] 
+Mapping filter: 'webRequestLoggingFilter' to: [/*] 
+Mapping filter: 'applicationContextIdFilter' to: [/*] 
+Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1184ab05: startup date [Mon Nov 13 16:57:50 CST 2017]; root of context hierarchy 
+Mapped "{[/stopDownPic]}" onto public java.lang.String cn.migu.unify.ai.controller.PicDownLoadService.stopDownPic(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/startDownPic]}" onto public java.lang.String cn.migu.unify.ai.controller.PicDownLoadService.startDownPic(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest) 
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) 
+Mapped URL path [/pic/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/txt/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/auditevents || /auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String) 
+Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException 
+Mapped "{[/health || /health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal) 
+Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String) 
+Mapped "{[/env || /env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String) 
+Mapped "{[/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>) 
+Mapped "{[/loggers || /loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String) 
+Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/info || /info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke() 
+Registering beans for JMX exposure on startup 
+Starting beans in phase 0 
+Tomcat started on port(s): 8080 (http) 
+Started UnifyAiApplication in 1.91 seconds (JVM running for 2.311) 
+Initializing Spring FrameworkServlet 'dispatcherServlet' 
+FrameworkServlet 'dispatcherServlet': initialization started 
+FrameworkServlet 'dispatcherServlet': initialization completed in 9 ms 
+由于重复请求或意外宕机引起请求冲突：[20171113164826_5M5RREGK] 等待10秒释放之前的任务 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165648750_000000048.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165658818_000000049.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165708787_000000050.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165718789_000000051.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165728930_000000052.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165738826_000000053.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165748988_000000054.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165758845_000000055.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165808687_000000056.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165818756_000000057.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165828810_000000058.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165838820_000000059.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165848820_000000060.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165858899_000000061.jpg 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165908903_000000062.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165918820_000000063.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165928897_000000064.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165938808_000000065.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165948806_000000066.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113165958850_000000067.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170008897_000000068.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170018822_000000069.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170028882_000000070.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170038934_000000071.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170048834_000000072.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170058930_000000073.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170108817_000000074.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170118784_000000075.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170128718_000000076.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170138803_000000077.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170148890_000000078.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170158884_000000079.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170208850_000000080.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170218958_000000081.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170228824_000000082.jpg 
+触发任务 channelId=[20171113164826_5M5RREGK] ==================>>>>>>http://snapshot.migucloud.com/testreal//testprd/201711317/5M5RREGK_C0_1510562787805/im_index 
+DownLoadPic: 20171113164826_5M5RREGK-onlineframe========>C:/gus/data/local/20171113164826_5M5RREGK/20171113170238836_000000083.jpg 
+发现停止任务请求,暂停该线程: Thread-19 
